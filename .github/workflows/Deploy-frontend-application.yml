@@ -30,9 +30,9 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          content: .
+          context: .
           push: true
-          tags: yu11001/234-deploylab-frontend:latest
+          tags: peterjie/234-deploylab-frontend:latest
       -
         name: copy file via ssh password
         uses: appleboy/scp-action@v0.1.4
@@ -47,7 +47,7 @@ jobs:
         name:   docker compose
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.HOST_SERVER }}
+          host: ${{secrets.HOST_SERVER}}
           username: ${{ secrets.HOST_USER_NAME }}
           key: ${{ secrets.HOST_SSH_PRIVATE_KEY }}
           port: 22
